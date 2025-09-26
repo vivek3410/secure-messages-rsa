@@ -2,7 +2,7 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import hashes, serialization
 
 # Load your private key
-with open("./Vignesh_priv.pem", "rb") as key_file:
+with open("./My_keys/Vignesh_priv.pem", "rb") as key_file:
     private_key = serialization.load_pem_private_key(
         key_file.read(),
         password=None
@@ -25,11 +25,11 @@ def decrypt_message(encrypted_file):
 
 # Example: decrypt all 5 received files
 files = [
-    "Encryptedby-Alice-for-Vignesh.txt",
-    "Encryptedby-Bob-for-Vignesh.txt",
-    "Encryptedby-Charlie-for-Vignesh.txt",
-    "Encryptedby-David-for-Vignesh.txt",
-    "Encryptedby-Eve-for-Vignesh.txt"
+    "Sharedencryptedfiles/EncryptedBy-Yash-for-Vignesh.txt",
+    # "Encryptedby-Bob-for-Vignesh.txt",
+    # "Encryptedby-Charlie-for-Vignesh.txt",
+    # "Encryptedby-David-for-Vignesh.txt",
+    # "Encryptedby-Eve-for-Vignesh.txt"
 ]
 
 for f in files:
