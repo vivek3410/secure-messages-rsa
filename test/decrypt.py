@@ -7,7 +7,7 @@ with open("../My_keys/Vignesh_priv.pem", "rb") as f:
     private_key = serialization.load_pem_private_key(f.read(), password=None)
 
 # 🔹 File containing Base64 ciphertext
-CIPHERTEXT_FILE = "ciphertext.txt"
+CIPHERTEXT_FILE = "../Encrypted_Files/EncryptedBy-Vignesh-for-daniel_acosta.txt"
 
 # 🔹 Read ciphertext from file
 with open(CIPHERTEXT_FILE, "r") as f:

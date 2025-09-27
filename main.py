@@ -5,35 +5,44 @@ from cryptography.hazmat.primitives.asymmetric import padding
 
 # === CONFIG ===
 PRIVATE_KEY_FILES = [
-    "./private_keys/daniel_acosta_privkey.pem",
-    "./private_keys/IzzyMacDonald_private_key.pem",
-    "./private_keys/Marcus_feliciano_privkey.pem",
-    "./private_keys/pierson_hendricks_privkey.pem",
-    "./private_keys/yash_jani_privkey.pem"
+    "./My_keys/Vignesh_priv.pem",
+    "./My_keys/Vignesh_priv.pem",
+
+    # "./private_keys/daniel_acosta_privkey.pem",
+    # "./private_keys/IzzyMacDonald_private_key.pem",
+    # "./private_keys/Marcus_feliciano_privkey.pem",
+    # "./private_keys/pierson_hendricks_privkey.pem",
+    # "./private_keys/yash_jani_privkey.pem"
 ]
 
 PUBLIC_KEY_FILES = [
-    "./public_keys/daniel_acosta_pubkey.pem",
-    "./public_keys/IzzyMacDonald_public_key.pem",
-    "./public_keys/Marcus_feliciano_pubkey.pem",
-    "./public_keys/pierson_hendricks_pubkey.pem",
-    "./public_keys/yash_jani_pubkey.pem"
+    "./My_keys/Vignesh.pem",
+    "./My_keys/Vignesh.pem",
+
+    # "./public_keys/daniel_acosta_pubkey.pem",
+    # "./public_keys/IzzyMacDonald_public_key.pem",
+    # "./public_keys/Marcus_feliciano_pubkey.pem",
+    # "./public_keys/pierson_hendricks_pubkey.pem",
+    # "./public_keys/yash_jani_pubkey.pem"
 ]
 
 PERSONS = [
-    "daniel_acosta",
-    "IzzyMacDonald",
-    "Marcus_feliciano",
-    "pierson_hendricks",
-    "yash_jani"
+    "test",
+    "vivek"
+    # "IzzyMacDonald",
+    # "Marcus_feliciano",
+    # "pierson_hendricks",
+    # "yash_jani"
 ]
 
 PLAINTEXTS = [
     b"Message for daniel acosta",
-    b"Message for IzzyMac Donald",
-    b"Message for Marcus feliciano",
-    b"Message for pierson hendricks",
-    b"Message for yash jani"
+    b"Message for daniel vivek",
+
+    # b"Message for IzzyMac Donald",
+    # b"Message for Marcus feliciano",
+    # b"Message for pierson hendricks",
+    # b"Message for yash jani"
 ]
 
 # === Load Keys ===
@@ -43,7 +52,7 @@ def load_public_key(path):
 
 def load_private_key(path, password=None):
     with open(path, "rb") as f:
-        return serialization.load_pem_private_key(f.read(), password=password)
+        return serialization.load_pem_private_key(f.read(),password=password)
 
 # === Encrypt and save as text file ===
 def encrypt_and_save(public_key, plaintext, out_path):
@@ -79,10 +88,10 @@ def load_and_decrypt(private_key, in_path):
 
 # === Main Flow ===
 if __name__ == "__main__":
-    for person, pub_file, plaintext in zip(PERSONS, PUBLIC_KEY_FILES, PLAINTEXTS):
+    for person, pub_file,priv_file, plaintext in zip(PERSONS, PUBLIC_KEY_FILES,PRIVATE_KEY_FILES, PLAINTEXTS):
         print(f"\n=== 🔹 Processing {person} ===")
         pub = load_public_key(pub_file)
-        # priv = load_private_key(priv_file)
+        priv = load_private_key(priv_file)
 
         out_file = f"./Encrypted_Files/EncryptedBy-Vignesh-for-{person}.txt"
 
@@ -90,4 +99,8 @@ if __name__ == "__main__":
         encrypt_and_save(pub, plaintext, out_file)
 
         print("Plaintext: ", plaintext.decode())
+
+        # Decrypt from saved file
+        decrypted = load_and_decrypt(priv, out_file)
+        print("🔓 Decrypted Text : ", decrypted.decode())
 
