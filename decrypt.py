@@ -46,6 +46,7 @@ PERSONS = [
     "./Sharedencryptedfiles/Encrypted-by-Aydeger-for-Vignesh.txt",
     "./Sharedencryptedfiles/Encryptedby-Izzy-for-Vigneshy.txt",
     "./Sharedencryptedfiles/Encryptedby-Marcus_Feliciano-for-vigneshy.txt.enc",
+    "./Sharedencryptedfiles/EncryptedBy-Yash-for-Vignesh.txt"
     # "./Sharedencryptedfiles/EncryptedBy-Yash-for-Vignesh.txt",
 ]
 
